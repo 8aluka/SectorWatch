@@ -10,13 +10,15 @@ disknb=$(cat $disklist | wc -l | sed 's/ .*/ /')
 while [ $nb -le $disknb ]
 do
     selectdisk=$(head -$nb $disklist | tail -1 | sed 's/#.*/ /')
-    result_05=$(smartctl -A $selectdisk | grep Reallocated_Sector | tail -c 2)
-    result_197=$(smartctl -A $selectdisk | grep Current_Pending | tail -c 2)
+    result_05=$(smartctl -A $selectdisk | grep Reallocated_Sector | tail -c 4)
+    result_197=$(smartctl -A $selectdisk | grep Current_Pending | tail -c 4)
 
-    if [ $result_05 -gt 0 ] || [ $result_197 -gt 0 ]; then
-        echo 該当ディスク:$selectdisk >> $senddata
-        echo ・代替処理済のセクタ数:$result_05 >> $senddata
-        echo ・代替処理保留中のセクタ数:$result_197 >> $senddata
+    if [ ! -s $result_05 ] || [ ! -s $result_197 ]; then
+        if [ $result_05 -gt 0 ] || [ $result_197 -gt 0 ]; then
+            echo 該当ディスク:$selectdisk >> $senddata
+            echo ・代替処理済のセクタ数:$result_05 >> $senddata
+            echo ・代替処理保留中のセクタ数:$result_197 >> $senddata
+        fi
     fi
     nb=`expr $nb + 1`
 done
