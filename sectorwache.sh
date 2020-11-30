@@ -13,8 +13,6 @@ do
     result_05=$(smartctl -A $selectdisk | grep Reallocated_Sector | tail -c 2)
     result_197=$(smartctl -A $selectdisk | grep Current_Pending | tail -c 2)
 
-    result_05=1
-
     if [ $result_05 -gt 0 ] || [ $result_197 -gt 0 ]; then
         echo 該当ディスク:$selectdisk >> $senddata
         echo ・代替処理済のセクタ数:$result_05 >> $senddata
