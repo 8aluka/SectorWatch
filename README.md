@@ -9,3 +9,5 @@ Linux環境であれば何もしなくても動くはず（**要root権限**、�
 Slackの使用したいチームにIncoming WebHooksを追加し、生成されたURLをスクリプト内のマスクされた部分と置換すればOK  
 
 上記のスクリプトをCrontabに登録して定期的に自動実行させておけば、異常が発生した時に初めてSlackへ通知が行く
+
+![不良セクタがあった場合の動作例](https://cdn-ak.f.st-hatena.com/images/fotolife/v/v_7zrgu0/20201204/20201204142455.jpg "不良セクタがあった場合の動作例")
