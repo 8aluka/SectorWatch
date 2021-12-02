@@ -1,4 +1,4 @@
-# SectorWache
+# SectorWatch
 HDDのSMART値をチェック、異常があればSlackへ通知するスクリプト
 
 代替処理済のセクタ数・代替処理保留中のセクタ数のSMART値を読み、0より値が大きければSlackへ通知する  
